@@ -14,4 +14,12 @@ session_start();
             return false;
         }
     }
+
+    function showName(){
+        if(isset($_SESSION['namn'])){
+            return $_SESSION['namn'];
+        }else{
+            return "";
+        }
+    }
 ?>

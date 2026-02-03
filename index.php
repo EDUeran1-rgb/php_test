@@ -16,9 +16,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?=$pagetitle?></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<?php require_once("assets/_header.php"); ?>
+
+
+<?php require_once("assets/_nav.php"); ?>
+
     
         <?php
     if(isLevel(100)){
@@ -26,20 +32,22 @@
     <form action="index.php" method="post">
         <input type="text" name="url" id="url" placeholder="Skriv url inklusive https://">
         <input type="text" name="desc" id="desc" placeholder="Beskrivning">
-        <input type="submit" value="Lägg till" name="btn">
+        <input type="submit" value="<?=$btnAdd?>" name="btn">
     </form>
 
  <?php 
     $sql="SELECT * FROM linx ORDER BY firstshown DESC";
     $result=mysqli_query($conn, $sql);
-    while($row=mysqli_fetch_assoc($result)){
-        echo "<p><a href='" . $row['url'] . "'>" . $row['description'] . "</a></p>";
-    }
+    while($row=mysqli_fetch_assoc($result)){ ?>
+        <p><a href='<?= $row['url'] ?>'><?= $row['description'] ?></a> <a href="linxedit.php?edit=<?=$row['id']?>">Ändra</a> <a href="linxedit.php?del=<?=$row['id']?>">Radera</a></p>
+ <?php   }
  
  }else{ ?>
  <h2>Du måste logga in!</h2>
  <a href="login.php">Login</a>
   <?php }  ?>
+
+<?php require_once("assets/_footer.php"); ?>
 
 </body>
 </html>

@@ -1,11 +1,16 @@
 <?php
 session_start();
+require_once("lang/sv.php");
+
 
     $user="root";
     $pass="";
     $db="phptest";
-    $server="localhost";
-    $conn=mysqli_connect($server, $user, $pass,$db) or die("DB unsuccessful!!");
+    $host="localhost";
+    $conn=mysqli_connect($host, $user, $pass,$db) or die("DB unsuccessful!!");    
+
+
+
 
     function isLevel($level){
         if(isset($_SESSION['level']) && intval($_SESSION['level'])>=$level){
@@ -22,4 +27,5 @@ session_start();
             return "";
         }
     }
+
 ?>

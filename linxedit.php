@@ -28,8 +28,8 @@ if(isset($_POST['updatebtn'])){
 </head>
 <body>
 <?php
-require_once("_header.php");
-require_once("_nav.php");
+require_once("assets/_header.php");
+require_once("assets/_nav.php");
 ?>
 <h2>Redigera eller ta bort länk</h2>
 <?php
@@ -50,7 +50,7 @@ if(isset($_GET['edit'])){
  ?>
     
 <?php
-require_once("_footer.php");
+require_once("assets/_footer.php");
 ?>
 </body>
 </html>

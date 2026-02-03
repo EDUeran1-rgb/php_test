@@ -21,6 +21,8 @@
 </head>
 <body>
 <?php require_once("assets/_header.php"); ?>
+
+
 <?php require_once("assets/_nav.php"); ?>
 
     
@@ -36,9 +38,9 @@
  <?php 
     $sql="SELECT * FROM linx ORDER BY firstshown DESC";
     $result=mysqli_query($conn, $sql);
-    while($row=mysqli_fetch_assoc($result)){
-        echo "<p><a href='" . $row['url'] . "'>" . $row['description'] . "</a></p>";
-    }
+    while($row=mysqli_fetch_assoc($result)){ ?>
+        <p><a href='<?= $row['url'] ?>'><?= $row['description'] ?></a> <a href="linxedit.php?edit=<?=$row['id']?>">Ändra</a> <a href="linxedit.php?del=<?=$row['id']?>">Radera</a></p>
+ <?php   }
  
  }else{ ?>
  <h2>Du måste logga in!</h2>
